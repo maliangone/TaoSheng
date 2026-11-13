@@ -199,6 +199,7 @@ class ResoundApp : Application() {
         }, scope, appointmentSettings, { app.resound.search.EmbeddingScheduler.enqueue(this, continuation = true) })
         AppGraph.rhythm = RoomRhythmStats(database)
         AppGraph.digestSettings = digestSettings
+        AppGraph.profileSettings = app.resound.profile.ProfileSettings(this)
         AppGraph.llmProviders = digestSettings.providers
         AppGraph.llmBalance = app.resound.usage.LlmBalanceChecker(getSharedPreferences("llm-balance", MODE_PRIVATE), digestSettings.providers, { b, line ->
             app.resound.push.LocalNotifier(this, app.resound.push.LocalNotifier.BALANCE_CHANNEL).send(

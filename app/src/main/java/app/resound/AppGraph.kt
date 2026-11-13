@@ -148,6 +148,10 @@ object AppGraph {
     lateinit var memory: MemoryRepository
     lateinit var digestSettings: DigestSettings
 
+    /** 动态长期记忆设置（默认关闭；关闭时不提取、不注入、不发新请求） */
+    lateinit var profileSettings: app.resound.profile.ProfileSettings
+    val isProfileSettingsReady: Boolean get() = ::profileSettings.isInitialized
+
     lateinit var ask: app.resound.ask.AskRepository
     val isAskReady: Boolean get() = ::ask.isInitialized
 
